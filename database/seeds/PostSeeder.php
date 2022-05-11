@@ -18,10 +18,10 @@ class PostSeeder extends Seeder
 
             $newpost = new Post();
 
-            $newpost->title = $faker->words(8, true);
+            $newpost->title = $faker->unique()->words(8, true);
             $newpost->slug = Str::slug($newpost->title);
             $newpost->content = $faker->paragraphs(10, true);
-            $newpost->published_at = $faker->randomElement([null, $faker->dateTimeBetween('-2 year', '+ 1 year')]);
+            $newpost->published_at = $faker->optional()->dateTimeBetween('-2 year', '+ 1 year');
 
             $newpost->save();
         }
