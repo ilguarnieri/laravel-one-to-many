@@ -56,6 +56,15 @@
 
         {{-- BUTTON --}}
         <button type="submit" class="btn btn-primary">Salva</button>
+
+        <form action="{{ route('admin.posts.destroy', $post) }}" method="POST">
+            @csrf
+            @method('DELETE')
+
+            <button class="btn btn-small btn-danger" type="submit">
+              Elimina
+            </button>
+          </form>
       </form> 
 </div>
 

@@ -16,6 +16,7 @@
             <th scope="col">Data pubblicazione</th>
             <th scope="col">Data creazione</th>
             <th scope="col"></th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>            
@@ -30,6 +31,16 @@
               <td>
                   <a class="btn btn-small btn-warning" href="{{ route('admin.posts.edit', $post ) }}">Modifica</a>
               </td>
+              <td>
+                <form action="{{ route('admin.posts.destroy', $post) }}" method="POST">
+                  @csrf
+                  @method('DELETE')
+
+                  <button class="btn btn-small btn-danger" type="submit">
+                    Elimina
+                  </button>
+                </form>
+            </td>
             </tr>
 
             @endforeach
