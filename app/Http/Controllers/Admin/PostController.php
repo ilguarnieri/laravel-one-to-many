@@ -16,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('created_at', 'desc')->get();
 
         return view('admin.posts.index', compact('posts'));
     }
@@ -61,7 +61,16 @@ class PostController extends Controller
             $slug = $slug_base . '-' . $counter;
             $counter++;
             $post_present = Post::where('slug', $slug )->first();
-        }        
+        }
+        
+        $newpost = new Post();
+
+        $newpost->fill($data);
+        $newpost->slug = $slug;
+
+        $newpost->save();
+
+        return redirect()->route('admin.posts.index');
     }
 
     /**

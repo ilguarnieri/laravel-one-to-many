@@ -34,6 +34,9 @@
                 <a class="navbar-brand" href="{{ route('admin.posts.index') }}">
                     Posts
                 </a>
+                <a class="navbar-brand" href="{{ route('admin.posts.create') }}">
+                    Create
+                </a>
                 @endauth
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">

@@ -14,14 +14,14 @@ class PostSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for($i = 0; $i < 100; $i++){
+        for($i = 0; $i < 15; $i++){
 
             $newpost = new Post();
 
             $newpost->title = $faker->unique()->words(8, true);
             $newpost->slug = Str::slug($newpost->title);
             $newpost->content = $faker->paragraphs(10, true);
-            $newpost->published_at = $faker->optional()->dateTimeBetween('-2 year', '+ 1 year');
+            $newpost->published_at = $faker->optional()->dateTimeBetween('-1 year', '+ 1 year');
 
             $newpost->save();
         }
