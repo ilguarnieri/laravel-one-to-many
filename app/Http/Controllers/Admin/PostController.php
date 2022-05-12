@@ -49,19 +49,7 @@ class PostController extends Controller
 
         $data = $request->all();
 
-        $slug = Str::slug($data['title']);
-        $slug_base = $slug;
-
-        $counter = 1;
-
-        $post_present = Post::where('slug', $slug)->first();
-
-        while($post_present){
-
-            $slug = $slug_base . '-' . $counter;
-            $counter++;
-            $post_present = Post::where('slug', $slug )->first();
-        }
+        $slug = Post::getUniqueSlug($data['title']);
         
         $newpost = new Post();
 
@@ -69,7 +57,6 @@ class PostController extends Controller
         $newpost->slug = $slug;
 
         $newpost->save();
-
         return redirect()->route('admin.posts.index');
     }
 
@@ -104,7 +91,26 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+
+        $request->validate([
+            'title' => 'required|string|max:150',
+            'content' => 'required|string',
+            'cover' => 'nullable|url',
+            'published_at' => 'nullable|date|before_or_equal:today'
+        ]);
+
+        $data = $request->all();
+        
+        if($post->title != $data['title']){
+
+            $slug = Post::getUniqueSlug($data['title']);
+
+            $data['slug'] = $slug;
+        }
+
+        $post->update($data);
+
+        return redirect()->route('admin.posts.index');
     }
 
     /**
