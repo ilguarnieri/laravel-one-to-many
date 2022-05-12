@@ -32,7 +32,7 @@
                   <a class="btn btn-small btn-warning" href="{{ route('admin.posts.edit', $post ) }}">Modifica</a>
               </td>
               <td>
-                <form action="{{ route('admin.posts.destroy', $post) }}" method="POST">
+                <form class="delete-form" action="{{ route('admin.posts.destroy', $post) }}" method="POST">
                   @csrf
                   @method('DELETE')
 

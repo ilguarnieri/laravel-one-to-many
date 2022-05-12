@@ -3,9 +3,28 @@
 @section('content')
 
 <div class="container">
-
-    <h1>Modifica post: <span class="text-primary">{{ $post->title }}</span></h1>
-
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-10">
+                
+                <h1>Modifica post: <span class="text-primary">{{ $post->title }}</span></h1>
+            </div>
+            <div class="col-2">
+                
+                <form class="delete-form" action="{{ route('admin.posts.destroy', $post) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                
+                    <button class="btn btn-small btn-danger" type="submit">
+                      Elimina
+                    </button>
+                  </form>
+                </form> 
+            </div>
+        </div>
+    </div>
+    
     <form action="{{ route('admin.posts.update', $post) }}" method="POST">
         @csrf
         @method('PUT')
@@ -57,15 +76,8 @@
         {{-- BUTTON --}}
         <button type="submit" class="btn btn-primary">Salva</button>
 
-        <form action="{{ route('admin.posts.destroy', $post) }}" method="POST">
-            @csrf
-            @method('DELETE')
-
-            <button class="btn btn-small btn-danger" type="submit">
-              Elimina
-            </button>
-          </form>
-      </form> 
+        <a class="ml-4 text-secondary" href="{{ route('admin.posts.index') }}">
+            Torna ai posts
+        </a>
 </div>
-
 @endsection
