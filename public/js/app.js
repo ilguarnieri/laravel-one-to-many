@@ -49795,15 +49795,21 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 
 var app = new Vue({
   el: '#app'
-});
+}); //selziona tutti i button all'interno del form con la classe...
+
 var buttons = document.querySelectorAll('.delete-form [type="submit"]');
 buttons.forEach(function (el) {
+  //aggiunge un listener al bottone ascoltando il click e passandogli una funzione con l'evento ascoltato
   el.addEventListener('click', function (e) {
-    e.preventDefault();
-    var btn = e.target;
-    var form = btn.closest('.delete-form');
+    //disabilitiamo il comportamento di default dell'elemento che riceve questo evento
+    e.preventDefault(); //proprietà all'interno del evento che fa riferimento al elemento stesso
+
+    var btn = e.target; //recupero del form
+
+    var form = btn.closest('.delete-form'); //confirm e tipo alert che apre una finestra di dialogo con l'utente e ritorna true o false
 
     if (form && confirm('Vuoi eliminare questo post?')) {
+      //invio del form
       form.submit();
     }
   });

@@ -39,7 +39,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-
+        //validazione dati
         $request->validate([
             'title' => 'required|string|max:150',
             'content' => 'required|string',
@@ -48,13 +48,14 @@ class PostController extends Controller
         ]);
 
         $data = $request->all();
-
+        //creazione dello slug con la funzione statica nel Model
         $slug = Post::getUniqueSlug($data['title']);
+        //aggiunta dello slug nel array data
+        $data['slug'] = $slug;
         
         $newpost = new Post();
-
+        //associazione dei dati in massa
         $newpost->fill($data);
-        $newpost->slug = $slug;
 
         $newpost->save();
         return redirect()->route('admin.posts.index');
@@ -100,9 +101,9 @@ class PostController extends Controller
         ]);
 
         $data = $request->all();
-        
+        //controllo se il titolo del post è cambiato
         if($post->title != $data['title']){
-
+            //creazione dello slug con la funzione statica nel Model
             $slug = Post::getUniqueSlug($data['title']);
 
             $data['slug'] = $slug;
