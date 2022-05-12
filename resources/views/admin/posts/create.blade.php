@@ -16,16 +16,6 @@
           @enderror
         </div>
 
-        {{-- CONTENUTO --}}
-        <div class="form-group">
-            <label for="content">Contenuto articolo:</label>
-            <textarea class="form-control @error('content') is-invalid @enderror" id="content" name="content" rows="4">{{ old('content') }}</textarea>
-
-            @error('content')
-            <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
-        </div>
-
         {{-- COVER --}}
         <div class="form-group">
             <label for="cover">URL immagine:</label>
@@ -33,6 +23,16 @@
   
             @error('cover')
                 <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        {{-- CONTENUTO --}}
+        <div class="form-group">
+            <label for="content">Contenuto articolo:</label>
+            <textarea class="form-control @error('content') is-invalid @enderror" id="content" name="content" rows="4">{{ old('content') }}</textarea>
+
+            @error('content')
+            <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
 
