@@ -13,6 +13,7 @@
             <th scope="col">#</th>
             <th scope="col">Titolo</th>
             <th scope="col">Slug</th>
+            <th scope="col">Categoria</th>
             <th scope="col">Data pubblicazione</th>
             <th scope="col">Data creazione</th>
             <th scope="col"></th>
@@ -26,6 +27,9 @@
               <td>{{ $post->id }}</td>
               <td>{{ $post->title }}</td>
               <td>{{ $post->slug }}</td>
+              <td>
+                {{ $post->category ? $post->category->name : '-' }}
+              </td>
               <td>{{ $post->published_at }}</td>
               <td>{{ $post->created_at }}</td>
               <td>
