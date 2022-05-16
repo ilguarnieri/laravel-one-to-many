@@ -41,7 +41,7 @@
 
         {{-- CATEGORIA --}}
         <div class="form-group">
-            <label for="category_id">Example select</label>
+            <label for="category_id">Categoria</label>
             <select class="form-control @error('category_id') is-invalid @enderror" id="category_id" name="category_id">
                 
                 <option value="">-- Nessuna --</option>
