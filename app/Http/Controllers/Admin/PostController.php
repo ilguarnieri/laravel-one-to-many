@@ -47,6 +47,7 @@ class PostController extends Controller
             'title' => 'required|string|max:150',
             'content' => 'required|string',
             'cover' => 'nullable|url',
+            'category_id' => 'nullable|exists:categories,id',
             'published_at' => 'nullable|date|before_or_equal:today'
         ]);
 
@@ -100,6 +101,7 @@ class PostController extends Controller
             'title' => 'required|string|max:150',
             'content' => 'required|string',
             'cover' => 'nullable|url',
+            'category_id' => 'nullable|exists:categories,id',
             'published_at' => 'nullable|date|before_or_equal:today'
         ]);
 

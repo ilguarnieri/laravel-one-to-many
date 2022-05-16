@@ -12,6 +12,7 @@ class Post extends Model
         'slug',
         'content',
         'cover',
+        'category_id',
         'published_at'
     ];
 
