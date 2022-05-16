@@ -1,5 +1,6 @@
 <?php
 
+use App\Category;
 use App\Post;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
@@ -14,6 +15,10 @@ class PostSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
+
+        $categories = Category::all();
+        $categoriesId = $categories->pluck('id')->all();
+
         for($i = 0; $i < 15; $i++){
 
             $newpost = new Post();
@@ -22,6 +27,7 @@ class PostSeeder extends Seeder
             $newpost->slug = Str::slug($newpost->title);
             $newpost->content = $faker->paragraphs(10, true);
             $newpost->published_at = $faker->optional()->dateTimeBetween('-1 year', '+ 1 year');
+            $newpost->category_id = $faker->optional()->randomElement( $categoriesId );
 
             $newpost->save();
         }
