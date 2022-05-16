@@ -15,6 +15,10 @@ class Post extends Model
         'published_at'
     ];
 
+    public function category(){
+        return $this->belongsTo('App\Category');
+    }
+
     public static function getUniqueSlug($title){
         $slug = Str::slug($title);
         $slug_base = $slug;

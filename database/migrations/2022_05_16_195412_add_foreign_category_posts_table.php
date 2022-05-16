@@ -21,7 +21,8 @@ class AddForeignCategoryPostsTable extends Migration
             //assegnazione della FK
             $table->foreign('category_id')
             ->references('id')
-            ->on('categories');
+            ->on('categories')
+            ->onDelete('set null');
         });
     }
 
