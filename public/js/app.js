@@ -49949,8 +49949,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Angelo\Documents\PHP\PHP__Boolean\Lez83-3 Maggio__laravel-boolpress-base\laravel-boolpress-base\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Angelo\Documents\PHP\PHP__Boolean\Lez83-3 Maggio__laravel-boolpress-base\laravel-boolpress-base\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Angelo\Documents\PHP\laravel-one-to-many\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Angelo\Documents\PHP\laravel-one-to-many\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
